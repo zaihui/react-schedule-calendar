@@ -1,6 +1,59 @@
 @prefix-cls: schedule-calendar;
+@prefix-day-cls: day-wrapper;
+@base-color: #141C24;
 
 .@{prefix-cls} {
   background: white;
   color: red;
+}
+
+.@{prefix-day-cls} {
+  position: relative;
+  padding-left: 40px;
+
+  &-area {
+    position: relative;
+    height: 60px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed rgba(20, 28, 36, 0.5);
+
+    &:first-child {
+      border-top: 1px dashed rgba(20, 28, 36, 0.5);
+    }
+
+    &:last-child {
+      height: 0;
+      border: none;
+    }
+
+    &-time {
+      position: absolute;
+      top: -10px;
+      left: -38px;
+      font-size: 12px;
+      color: rgba(@base-color, .5);
+      user-select: none;
+    }
+  }
+
+  &-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-left: 40px;
+  }
+}
+
+.schedule-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 120px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-left: 4px solid #448AFF;
+  background-color: rgba(#448AFF, .3);
 }

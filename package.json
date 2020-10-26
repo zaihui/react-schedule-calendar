@@ -29,6 +29,8 @@
     "test": "father test"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "dayjs": "^1.9.4",
     "rc-trigger": "^5.0.0"
   },
   "devDependencies": {
