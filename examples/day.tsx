@@ -4,7 +4,7 @@ import { ScheduleDay } from '../src';
 import '../assets/bootstrap.less';
 
 const Test: React.FC = () => (
-  <div style={{ backgroundColor: 'white', color: 'blue' }}>
+  <div className="schedule-calendar">
     <ScheduleDay />
   </div>
 );

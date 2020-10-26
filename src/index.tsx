@@ -1,5 +1,3 @@
-import Tooltip from './Tooltip';
-import ScheduleDay, { ScheduleDayProps } from './Day';
+import ScheduleDay, { ScheduleDayProps } from './ScheduleDay';
 
 export { ScheduleDay, ScheduleDayProps };
-export default Tooltip;
