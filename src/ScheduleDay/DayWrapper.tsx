@@ -6,7 +6,6 @@ import { getNumsArray } from '../utils';
 export interface DayWrapperProps {
   prefix?: string;
   className?: string;
-  children: React.ReactChild;
 }
 
 const hours = getNumsArray(25).map(n => `${n}:00`);
