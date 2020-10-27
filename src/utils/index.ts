@@ -10,16 +10,19 @@ export const getNumsArray = (num: number) => {
   return results;
 };
 
+export const transformTimeToHeight = (time: string): number => {
+  const hour = dayjs(time).hour();
+  const minute = dayjs(time).minute();
+
+  return hour * 60 + minute;
+};
+
 export const transformTimeToRect = (
   start: string,
   end: string,
 ): { height: number; top: number } => {
-  const startHour = dayjs(start).hour();
-  const startMinute = dayjs(start).minute();
-  const startPoint = startHour * 60 + startMinute;
-  const endHour = dayjs(end).hour();
-  const endMinute = dayjs(end).minute();
-  const endPoint = endHour * 60 + endMinute;
+  const startPoint = transformTimeToHeight(start);
+  const endPoint = transformTimeToHeight(end);
 
   return { height: endPoint - startPoint, top: startPoint };
 };
