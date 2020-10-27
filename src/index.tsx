@@ -1,3 +1,3 @@
-import ScheduleDay, { ScheduleDayProps } from './ScheduleDay';
+import * as ScheduleDay from './ScheduleDay';
 
-export { ScheduleDay, ScheduleDayProps };
+export { ScheduleDay };
