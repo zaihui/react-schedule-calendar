@@ -1,8 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { getNumsArray, transformTimeToHeight } from '../utils';
 
@@ -31,16 +29,14 @@ const TimeLine: React.ForwardRefRenderFunction<any, TimeLineProps> = props => {
   }, []);
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className={className} ref={wrapperRef}>
-        {hours.map((v, i) => (
-          <div key={`${i}`} className={`${prefix}-area`}>
-            <span className={`${prefix}-area-time`}>{v}</span>
-          </div>
-        ))}
-        <div className={`${prefix}-content`}>{children}</div>
-      </div>
-    </DndProvider>
+    <div className={className} ref={wrapperRef}>
+      {hours.map((v, i) => (
+        <div key={`${i}`} className={`${prefix}-area`}>
+          <span className={`${prefix}-area-time`}>{v}</span>
+        </div>
+      ))}
+      <div className={`${prefix}-content`}>{children}</div>
+    </div>
   );
 };
 
