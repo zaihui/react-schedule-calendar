@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { useDrag, useDrop } from 'react-dnd'
 import Tooltip from 'rc-tooltip';
 import { TooltipProps } from 'rc-tooltip/lib/Tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 
 import { transformTimeToRect } from '../utils';
+import { DragItem } from '../constants'
 
 export interface ScheduleCardProps {
   startTime: string;
@@ -34,13 +36,31 @@ const ScheduleCard: React.FC<ScheduleCardProps> = props => {
     ...tooltipProps,
   };
 
+  const [_, drop] = useDrop({
+    accept: DragItem.TimeCard,
+  })
+  const [dragObj, drag] = useDrag({
+    item: { type: DragItem.TimeCard, startTime, endTime },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+      getSourceClientOffset: monitor.getSourceClientOffset(),
+      getDifferenceFromInitialOffset: monitor.getDifferenceFromInitialOffset(),
+      getClientOffset: monitor.getClientOffset(),
+      getInitialClientOffset: monitor.getInitialClientOffset(),
+      getInitialSourceClientOffset: monitor.getInitialSourceClientOffset(),
+    }),
+  })
+  console.log(dragObj)
   const child = (
-    <div
-      onClick={onClick}
-      className="schedule-card"
-      style={{ height: rect.height, marginTop: rect.top }}
-    >
-      {children}
+    <div ref={drop}>
+      <div
+        onClick={onClick}
+        className="schedule-card"
+        style={{ height: rect.height, marginTop: rect.top }}
+        ref={drag}
+      >
+        {children}
+      </div>
     </div>
   );
   if (showTooltip && !!ttipProps.overlay) {
