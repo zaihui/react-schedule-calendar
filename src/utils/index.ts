@@ -27,3 +27,65 @@ export const transformTimeToRect = (
   // top需要有10px的padding-top
   return { height: endPoint - startPoint, top: startPoint + 10 };
 };
+
+export const getGroupArray = (array: any[], num: number) => {
+  let index = 0;
+  const newArray = [];
+  while (index < array.length) {
+    newArray.push(array.slice(index, (index += num)));
+  }
+  return newArray;
+};
+
+export const getMonthDay = (date: string): any => {
+  const nowDaysNum = dayjs(date).daysInMonth();
+  const prevDaysNum = dayjs(date)
+    .subtract(1, 'month')
+    .daysInMonth();
+  const startWeek = dayjs(`${date}-01`).day();
+  const endWeek = dayjs(`${date}-${nowDaysNum}`).day();
+  const prevDays = [];
+  const nextDays = [];
+  const nowDays = [];
+  let i = prevDaysNum - startWeek + 1;
+  let j = 1;
+  let k = 1;
+  while (i <= prevDaysNum) {
+    prevDays.push({
+      isShow: false,
+      label: `${i}`,
+      date: dayjs(date)
+        .subtract(1, 'month')
+        .set('date', i)
+        .format('YYYY-MM-DD'),
+    });
+    i += 1;
+  }
+  while (j <= 6 - endWeek) {
+    nextDays.push({
+      isShow: false,
+      label:
+        j === 1
+          ? `${dayjs(date)
+              .add(1, 'month')
+              .month() + 1}月`
+          : `${j}`,
+      date: dayjs(date)
+        .add(1, 'month')
+        .set('date', j)
+        .format('YYYY-MM-DD'),
+    });
+    j += 1;
+  }
+  while (k <= nowDaysNum) {
+    nowDays.push({
+      isShow: true,
+      label: k === 1 ? `${dayjs(date).month() + 1}月` : `${k}`,
+      date: dayjs(date)
+        .set('date', k)
+        .format('YYYY-MM-DD'),
+    });
+    k += 1;
+  }
+  return prevDays.concat(nowDays).concat(nextDays);
+};

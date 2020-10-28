@@ -1,6 +1,8 @@
 @prefix-cls: schedule-calendar;
 @prefix-day-cls: day-wrapper;
+@prefix-month-cls: month-wrapper;
 @base-color: #141C24;
+@theme-primary-color: rgb(68, 138, 255);
 
 .rc-tooltip-arrow {
   display: none;
@@ -59,4 +61,68 @@
   width: 120px;
   min-width: 50px;
   box-sizing: border-box;
+}
+
+table tr td {
+  border: 1px solid rgba(@base-color, .1);
+}
+
+.@{prefix-month-cls} {
+  &-header {
+    &-item {
+      width: 127px;
+      height: 60px;
+      text-align: left;
+  
+      &-cn {
+        height: 18px;
+        font-size: 13px;
+        color: rgba(@base-color, .7);
+        line-height: 18px;
+      }
+  
+      &-en {
+        height: 33px;
+        font-size: 24px;
+        font-weight: 500;
+        color: @base-color;
+        line-height: 33px;
+      }
+    }
+  }
+}
+
+.month-card {
+  width: 127px;
+  height: 120px;
+  padding: 2px 0 0 6px;
+
+  &-content {
+    color: rgba(@base-color, .3);
+
+    &.show {
+      color: rgba(@base-color, .7);
+    }
+
+    &-day {
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+      background-color: white;
+      font-size: 15px;
+      text-align: center;
+      line-height: 24px;
+
+      &.selected {
+        color: white;
+        background-color: @theme-primary-color;
+      }
+
+      &.special {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+  }
 }
