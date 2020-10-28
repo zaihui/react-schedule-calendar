@@ -10,7 +10,6 @@ export interface ScheduleCardProps {
   endTime: string;
   showTooltip?: boolean;
   tooltipProps?: TooltipProps;
-  children(arg): React.ReactNode;
   onClick?(arg: React.MouseEvent): void;
 }
 
@@ -21,9 +20,6 @@ const defaultOverlayInnerStyle = {
   borderRadius: 2,
   color: 'black',
 };
-
-const borderColor = '#448AFF';
-const backgroundColor = 'rgba(33, 150, 243, .3)';
 
 const ScheduleCard: React.FC<ScheduleCardProps> = props => {
   const { children, startTime, endTime, tooltipProps = {}, showTooltip = false, onClick } = props;
@@ -41,13 +37,11 @@ const ScheduleCard: React.FC<ScheduleCardProps> = props => {
   const style = {
     height: rect.height,
     marginTop: rect.top,
-    borderColor,
-    backgroundColor,
   };
 
   const child = (
     <div onClick={onClick} className="schedule-card" style={{ ...style }}>
-      {children(style)}
+      {children}
     </div>
   );
   if (showTooltip && !!ttipProps.overlay) {

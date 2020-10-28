@@ -24,5 +24,6 @@ export const transformTimeToRect = (
   const startPoint = transformTimeToHeight(start);
   const endPoint = transformTimeToHeight(end);
 
-  return { height: endPoint - startPoint, top: startPoint };
+  // top需要有10px的padding-top
+  return { height: endPoint - startPoint, top: startPoint + 10 };
 };

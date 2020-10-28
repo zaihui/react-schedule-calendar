@@ -21,7 +21,7 @@
   "module": "es/index",
   "scripts": {
     "build": "father doc build --storybook",
-    "compile": "father build && lessc assets/bootstrap.less assets/bootstrap.css && lessc assets/bootstrap_white.less assets/bootstrap_white.css",
+    "compile": "father build && lessc assets/bootstrap.less assets/bootstrap.css",
     "coverage": "father test --coverage",
     "lint": "eslint src/ examples/ --ext .tsx,.ts,.jsx,.js",
     "prepublishOnly": "npm run compile && np --no-cleanup --yolo --no-publish",
@@ -41,6 +41,7 @@
     "@types/react-dom": "^16.9.2",
     "@types/warning": "^3.0.0",
     "@typescript-eslint/parser": "^4.5.0",
+    "antd": "^4.7.3",
     "cross-env": "^7.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -50,6 +51,7 @@
     "less": "^3.11.1",
     "np": "^6.0.0",
     "react": "^16.10.2",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.10.2",
     "typescript": "^3.9.4"
   },

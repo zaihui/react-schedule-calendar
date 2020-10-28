@@ -35,7 +35,7 @@ const TimeLine: React.ForwardRefRenderFunction<any, TimeLineProps> = props => {
           <span className={`${prefix}-area-time`}>{v}</span>
         </div>
       ))}
-      <div className={`${prefix}-content`}>{children}</div>
+      <section className={`${prefix}-content`}>{children}</section>
     </div>
   );
 };
