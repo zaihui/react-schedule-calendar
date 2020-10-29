@@ -3,9 +3,46 @@
 }
 
 .time-course-card {
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
   padding: 12px 4px;
   border-left: 4px solid transparent;
+}
+
+.spin {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 9;
+  opacity: .3;
+}
+
+.select-option {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.fields {
+  display: flex;
+  margin-bottom: 8px;
+  
+  &-icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+  }
+
+  &-content {
+    font-size: 14px;
+    color: #141C24;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
 }
 
 .date-title {
@@ -32,26 +69,5 @@
     padding-bottom: 12px;
     margin-bottom: 17px;
     border-bottom: 1px solid rgba(#141C24, .1);
-  }
-}
-
-.fields {
-  display: flex;
-  margin-bottom: 8px;
-  
-  &-icon {
-    flex-shrink: 0;
-    width: 14px;
-    height: 14px;
-    margin-right: 6px;
-  }
-
-  &-content {
-    font-size: 14px;
-    color: #141C24;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
   }
 }
