@@ -1,5 +1,5 @@
 import * as ScheduleDay from './ScheduleDay';
-import ScheduleMonth, { ScheduleMonthProps } from './ScheduleMonth';
+import * as ScheduleMonth from './ScheduleMonth';
 
 export { ScheduleDay };
-export { ScheduleMonth, ScheduleMonthProps };
+export { ScheduleMonth };
