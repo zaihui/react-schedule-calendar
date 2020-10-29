@@ -3,9 +3,67 @@
 @prefix-month-cls: month-wrapper;
 @base-color: #141C24;
 @theme-primary-color: rgb(68, 138, 255);
+@border-color: rgba(20, 28, 36, 0.1);
 
 .rc-tooltip-arrow {
   display: none;
+}
+
+.week-header {
+  display: flex;
+  padding-left: 40px;
+
+  .week-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 14.3%;
+    border-bottom: 1px solid @border-color;
+    cursor: pointer;
+
+    .week {
+      font-size: 13px;
+      color: rgba(@base-color, .7);
+    }
+
+    .day {
+      font-size: 24px;
+      color: @base-color;
+    }
+
+    &.checked-day {
+      .week, .day {
+        color: #448AFF;
+      }
+    }
+  }
+}
+
+.week-time-line {
+  width: 100%;
+  height: 100%;
+
+  &-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .week-card-scrollbar {
+    width: 14.3%;
+    height: 100%;
+  }
+
+  .week-card-wrapper {
+    position: absolute;
+    display: flex;
+    width: 14.3%;
+    height: 1470px;
+    min-width: 50px;
+    border-right: 1px solid @border-color;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
 }
 
 .@{prefix-day-cls} {
@@ -14,17 +72,20 @@
   height: 100%;
   padding-left: 40px;
   padding-top: 10px;
-  overflow-y: auto;
+
+  &-not-show-time {
+    padding-left: 0;
+  }
 
   &-area {
     position: relative;
     height: 60px;
     box-sizing: border-box;
-    border-bottom: 1px dashed rgba(20, 28, 36, 0.1);
-    border-left: 1px solid rgba(20, 28, 36, 0.1);
+    border-bottom: 1px dashed @border-color;
+    border-left: 1px solid @border-color;
 
     &:first-child {
-      border-top: 1px dashed rgba(20, 28, 36, 0.1);
+      border-top: 1px dashed @border-color;
     }
 
     &:last-of-type {

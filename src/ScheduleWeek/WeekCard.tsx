@@ -5,7 +5,7 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 import { transformTimeToRect } from '../utils';
 
-export interface ScheduleCardProps {
+export interface WeekCardProps {
   startTime: string;
   endTime: string;
   showTooltip?: boolean;
@@ -22,7 +22,7 @@ const defaultOverlayInnerStyle = {
   color: 'black',
 };
 
-const ScheduleCard: React.FC<ScheduleCardProps> = props => {
+const WeekCard: React.FC<WeekCardProps> = props => {
   const {
     children,
     startTime,
@@ -60,4 +60,4 @@ const ScheduleCard: React.FC<ScheduleCardProps> = props => {
   return child;
 };
 
-export default ScheduleCard;
+export default WeekCard;
