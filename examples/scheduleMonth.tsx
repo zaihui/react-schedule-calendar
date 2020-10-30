@@ -133,7 +133,7 @@ const SelectForm = ({ onChange }) => {
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">添加</Button>
+          <Button type="primary" htmlType="submit">提交</Button>
         </Form.Item>
       </Form>
     </Card>

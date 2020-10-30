@@ -1,11 +1,22 @@
 import React from 'react';
-
+import dayjs from 'dayjs';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { ScheduleDay } from '../src';
 import './index.less';
 
 const { ScheduleCard, TimeLine } = ScheduleDay
 const Test: React.FC = () => (
   <div className="schedule-week">
+    <div className="date-title">
+      <LeftOutlined
+        style={{ cursor: 'pointer' }}
+      />
+      &nbsp;
+      {dayjs().format('YYYY-MM-DD')}&nbsp;
+      <RightOutlined
+        style={{ cursor: 'pointer' }}
+      />
+    </div>
     <TimeLine>
       <ScheduleCard
         showTooltip
