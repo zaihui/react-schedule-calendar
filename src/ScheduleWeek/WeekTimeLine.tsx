@@ -1,69 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import dayjs from 'dayjs'
 
 import WeekHeader from './WeekHeader';
-import { TimeLine } from '../ScheduleDay';
-import WeekCard from './WeekCard';
+import { TimeLine, ScheduleCard } from '../ScheduleDay';
+import WeekCard from './WeekCard'
 
-export interface WeekTimeLineProps {}
-const WeekTimeLine: React.FC<WeekTimeLineProps> = () => (
-  // const [] = useState()
-  <div className="week-time-line">
-    <WeekHeader />
-    <TimeLine>
-      <div className="week-time-line-wrapper">
-        <div className="week-card-wrapper" style={{ left: 'calc(14.3% * 3)' }}>
-          <WeekCard
-            showTooltip
-            startTime="2020-12-12 09:00"
-            endTime="2020-12-12 17:00"
-            tooltipProps={{ overlay: 'hello', trigger: ['hover'] }}
-          >
-            <div
-              style={{ width: '100%', height: '100%', backgroundColor: 'rgba(115, 225, 241, .3)' }}
-            >
-              hahaha
-            </div>
-          </WeekCard>
-          <WeekCard
-            showTooltip
-            startTime="2020-12-12 09:00"
-            endTime="2020-12-12 12:00"
-            tooltipProps={{ overlay: 'hello', trigger: ['hover'] }}
-          >
-            <div
-              style={{ width: '100%', height: '100%', backgroundColor: 'rgba(33, 150, 243, .3)' }}
-            >
-              hahaha
-            </div>
-          </WeekCard>
-          <WeekCard
-            showTooltip
-            startTime="2020-12-12 09:00"
-            endTime="2020-12-12 12:00"
-            tooltipProps={{ overlay: 'hello', trigger: ['hover'] }}
-          >
-            <div
-              style={{ width: '100%', height: '100%', backgroundColor: 'rgba(220, 169, 249, .3)' }}
-            >
-              hahaha
-            </div>
-          </WeekCard>
-          <WeekCard
-            showTooltip
-            startTime="2020-12-12 21:00"
-            endTime="2020-12-12 22:00"
-            tooltipProps={{ overlay: 'hello', trigger: ['hover'] }}
-          >
-            <div
-              style={{ width: '100%', height: '100%', backgroundColor: 'rgba(115, 225, 241, .3)' }}
-            >
-              hahaha
-            </div>
-          </WeekCard>
+export interface WeekTimeLineProps {
+  prefix?: string
+  scrollTo?: string
+  children: any;
+}
+const weekArray = Array(7).fill(0)
+const WeekTimeLine: React.FC<WeekTimeLineProps> = props => {
+  const {
+    prefix = 'week-time-line',
+    scrollTo,
+    children,
+  } = props
+  const [scrollTop, setScrollTop] = useState<string>()
+  useEffect(() => {
+    const allTime = [];
+    if (scrollTo) {
+      setScrollTop(scrollTo)
+    } else if (children) {
+      const childs = React.Children.toArray(children);
+      if (childs.some((v: any) => v.type !== WeekCard)) return;
+
+      const traveseChildren = child => {
+        React.Children.forEach(child, (c: React.ReactElement) => {
+          if (c.type === ScheduleCard) {
+            allTime.push(c.props.startTime)
+            return
+          }
+          traveseChildren(c.props.children)
+        })
+      }
+      traveseChildren(children)
+      const earlistTime = allTime.reduce((cur, nex) => {
+        if (dayjs(cur).isBefore(dayjs(nex))) {
+          return cur;
+        }
+        return nex;
+      });
+      if (earlistTime) {
+        setScrollTop(earlistTime)
+      }
+    }
+  }, [children, scrollTo])
+  return (
+    <div className={prefix}>
+      <WeekHeader />
+      <TimeLine scrollTo={scrollTop}>
+        <div className={`${prefix}-wrapper`}>
+          {weekArray.map((_, i) => (<div key={i} className={`${prefix}-wrapper-border`} />))}
+          {children}
         </div>
-      </div>
-    </TimeLine>
-  </div>
-);
+      </TimeLine>
+    </div>
+  )
+};
 
 export default WeekTimeLine;

@@ -11,7 +11,6 @@ import '../assets/bootstrap.less';
 import './index.less';
 
 const scrollBarStyle: React.CSSProperties = {
-  boxShadow: 'rgba(0, 0, 0, 0.12) 0px 0px 0px -2px, rgba(0, 0, 0, 0.08) 0px 6px 7px 0px, rgba(0, 0, 0, 0.05) 0px 9px 14px -4px',
   width: 900,
   height: 500,
   margin: '24px auto',
@@ -160,7 +159,7 @@ const DateForm = ({ onChange }) => {
           </Select>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <Button type="primary" htmlType="submit">提交</Button>
         </Form.Item>
       </Form>
     </Card>

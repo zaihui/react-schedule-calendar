@@ -4,6 +4,7 @@
 @base-color: #141C24;
 @theme-primary-color: rgb(68, 138, 255);
 @border-color: rgba(20, 28, 36, 0.1);
+@week-width: calc(100% / 7);
 
 .rc-tooltip-arrow {
   display: none;
@@ -17,7 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 14.3%;
+    width: @week-width;
     border-bottom: 1px solid @border-color;
     cursor: pointer;
 
@@ -45,22 +46,25 @@
 
   &-wrapper {
     position: relative;
+    display: flex;
     width: 100%;
     height: 100%;
+
+    &-border {
+      width: @week-width;
+      height: 1450px;
+      border-right: 1px solid @border-color;
+      box-sizing: border-box;
+    }
   }
 
-  .week-card-scrollbar {
-    width: 14.3%;
-    height: 100%;
-  }
-
-  .week-card-wrapper {
+  &-card {
     position: absolute;
     display: flex;
-    width: 14.3%;
+    width: @week-width;
     height: 1470px;
     min-width: 50px;
-    border-right: 1px solid @border-color;
+    // border-right: 1px solid @border-color;
     box-sizing: border-box;
     overflow-x: auto;
   }
