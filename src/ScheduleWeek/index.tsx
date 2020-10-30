@@ -1,4 +1,4 @@
 import WeekTimeLine, { WeekTimeLineProps } from './WeekTimeLine';
-import WeekCard, { WeekCardProps } from './WeekCard'
+import WeekCard, { WeekCardProps } from './WeekCard';
 
 export { WeekTimeLine, WeekTimeLineProps, WeekCard, WeekCardProps };
