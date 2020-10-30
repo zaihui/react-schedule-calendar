@@ -28,6 +28,11 @@ export const transformTimeToRect = (
   return { height: endPoint - startPoint, top: startPoint + 10 };
 };
 
+/**
+ * 将数组等分
+ * @param array
+ * @param num 等分的值
+ */
 export const getGroupArray = (array: any[], num: number) => {
   let index = 0;
   const newArray = [];
@@ -37,7 +42,17 @@ export const getGroupArray = (array: any[], num: number) => {
   return newArray;
 };
 
-export const getMonthDay = (date: string): any => {
+/**
+ * 获得日历面板当月的显示日期
+ * @param date YYYY-MM
+ */
+export const getMonthDay = (
+  date: string,
+): {
+  isShow: boolean;
+  label: string;
+  date: string;
+}[] => {
   const nowDaysNum = dayjs(date).daysInMonth();
   const prevDaysNum = dayjs(date)
     .subtract(1, 'month')
