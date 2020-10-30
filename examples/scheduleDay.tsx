@@ -32,7 +32,7 @@ const Fields: React.FC<any> = ({ icon, iconStyle, children, onlyIcon }) => (
   </div>
 );
 
-const colors = [
+export const colors = [
   { color: '#73E1F1', backgroundColor: 'rgba(115, 225, 241, .3)' },
   { color: '#2196F3', backgroundColor: 'rgba(33, 150, 243, .3)' },
   { color: '#DCA9F9', backgroundColor: 'rgba(220, 169, 249, .3)' },
