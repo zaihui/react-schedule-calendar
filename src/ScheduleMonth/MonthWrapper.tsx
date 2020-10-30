@@ -6,7 +6,7 @@ import { getMonthDay, getGroupArray } from '../utils';
 import { WeekText } from '../constants';
 
 export interface MonthWrapperProps {
-  value: string;
+  value?: string;
   prefix?: string;
   className?: string;
   children?: React.ReactElement | React.ReactElement[];
@@ -14,7 +14,7 @@ export interface MonthWrapperProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MonthWrapper: React.ForwardRefRenderFunction<any, MonthWrapperProps> = (props, ref) => {
-  const { value, prefix = 'month-wrapper', className: clsName, children } = props;
+  const { value = dayjs().format('YYYY-MM'), prefix = 'month-wrapper', className: clsName, children } = props;
   const className = cx(clsName, prefix);
   const wrapperRef = React.useRef<HTMLTableElement>();
 
@@ -31,7 +31,7 @@ const MonthWrapper: React.ForwardRefRenderFunction<any, MonthWrapperProps> = (pr
         </tr>
       </thead>
       <tbody className={`${prefix}-body`}>
-        {getGroupArray(getMonthDay(value), 7).map((w, i) => (
+        {getGroupArray(getMonthDay(dayjs(value).format('YYYY-MM')), 7).map((w, i) => (
           <tr key={`${i}`}>
             {w.map(d => (
               <td className={`${prefix}-body-item`} key={d.date}>

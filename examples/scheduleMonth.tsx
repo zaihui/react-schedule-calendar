@@ -12,12 +12,13 @@ import './style.less';
 const OperateDate = {
   Sub: 'sub',
   Add: 'add',
-}
+};
 
-const DATE_FORMAT = 'YYYY-MM'
-const DATE_FULL_FORMAT = 'YYYY-MM-DD'
-const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm'
-const TIME_FORMAT = 'HH:mm'
+const DATE_FORMAT = 'YYYY-MM';
+const DATE_FORMAT_CN = 'YYYY年MM月';
+const DATE_FULL_FORMAT = 'YYYY-MM-DD';
+const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';
+const TIME_FORMAT = 'HH:mm';
 
 const Item: React.FC<any> = ({ label, children, isGrey }) => (
   <div className={cx('item', { grey: !isGrey })}>
@@ -34,15 +35,15 @@ const defaultData = [
     data: [
       {
         time: '10:00',
-        content: '咿呀咿呀哟',
+        content: '船潜-理论知识课',
       },
       {
         time: '10:30',
-        content: '你哈皮2',
+        content: '体验潜水-理论知识课',
       },
       {
         time: '11:00',
-        content: '你哈皮3',
+        content: '装备专家-理论知识课',
       },
     ],
   },
@@ -50,16 +51,16 @@ const defaultData = [
     date: '2020-10-10',
     data: [
       {
-        time: '10:00',
-        content: '你哈皮',
+        time: '12:00',
+        content: '顶尖中性浮力-开放水域实践课程',
       },
       {
-        time: '10:30',
-        content: '你哈皮2',
+        time: '15:30',
+        content: '船潜-理论知识课',
       },
       {
-        time: '11:00',
-        content: '你哈皮3',
+        time: '17:00',
+        content: '船潜-实践课程',
       },
     ],
   },
@@ -67,8 +68,8 @@ const defaultData = [
     date: '2020-10-20',
     data: [
       {
-        time: '10:00',
-        content: '你哈皮1',
+        time: '9:00',
+        content: '船潜-实践课程',
       },
     ],
   },
@@ -77,15 +78,15 @@ const defaultData = [
     data: [
       {
         time: '10:00',
-        content: '你哈皮1',
+        content: '顶尖中性浮力-开放水域实践课程',
       },
       {
-        time: '10:20',
-        content: '你哈皮2',
+        time: '14:20',
+        content: '顶尖中性浮力-理论知识课',
       },
       {
-        time: '11:00',
-        content: '你哈皮3',
+        time: '15:00',
+        content: '船潜-实践课程',
       },
     ],
   },
@@ -166,11 +167,11 @@ const Test: React.FC = () => {
     if (hasData) {
       newData.forEach(d => {
         if (dayjs(d.date)?.isSame(dayjs(value.date))) {
-          d.data.push(value.data[0]);
+          d.data.unshift(value.data[0]);
         }
       })
     } else {
-      newData.push(value);
+      newData.unshift(value);
     }
     setData([...newData])
   };
@@ -183,7 +184,7 @@ const Test: React.FC = () => {
           onClick={() => handleChangeDate(OperateDate.Sub)}
         />
         &nbsp;
-        {dayjs(date).format('YYYY年MM月')}&nbsp;
+        {dayjs(date).format(DATE_FORMAT_CN)}&nbsp;
         <RightOutlined
           style={{ cursor: 'pointer' }}
           onClick={() => handleChangeDate(OperateDate.Add)}
@@ -205,8 +206,8 @@ const Test: React.FC = () => {
               autoHide
               autoHideTimeout={300}
             >
-              {v.data.map(l => (
-                <Item label={l.time} isGrey={dayjs(v.date)?.isSame(dayjs(date), 'month')}>
+              {v.data.map((l, j) => (
+                <Item key={`${j}`} label={l.time} isGrey={dayjs(v.date)?.isSame(dayjs(date), 'month')}>
                   {l.content}
                 </Item>
               ))}
