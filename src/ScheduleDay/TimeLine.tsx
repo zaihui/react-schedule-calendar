@@ -16,7 +16,7 @@ export interface TimeLineProps {
 }
 
 const hours = getNumsArray(25).map(n => `${n}:00`);
-const TimeLine: React.ForwardRefRenderFunction<any, TimeLineProps> = props => {
+const TimeLine: React.ForwardRefRenderFunction<any, TimeLineProps> = (props, ref) => {
   const {
     prefix = 'day-wrapper',
     className: clsName,
@@ -60,10 +60,10 @@ const TimeLine: React.ForwardRefRenderFunction<any, TimeLineProps> = props => {
             {showTime && <span className={`${prefix}-area-time`}>{v}</span>}
           </div>
         ))}
-        <section className={`${prefix}-content`}>{children}</section>
+        <section className={`${prefix}-content`} ref={ref}>{children}</section>
       </div>
     </Scrollbars>
   );
 };
 
-export default TimeLine;
+export default React.forwardRef(TimeLine);

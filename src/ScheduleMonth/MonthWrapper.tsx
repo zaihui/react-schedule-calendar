@@ -3,7 +3,7 @@ import cx from 'classnames';
 import dayjs from 'dayjs';
 
 import { getMonthDay, getGroupArray } from '../utils';
-import { WeekText } from '../constants';
+import { WeekText } from '../utils/constants';
 
 export interface MonthWrapperProps {
   value?: string;
@@ -12,12 +12,12 @@ export interface MonthWrapperProps {
   children?: React.ReactElement | React.ReactElement[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MonthWrapper: React.ForwardRefRenderFunction<any, MonthWrapperProps> = (props, ref) => {
   const { value = dayjs().format('YYYY-MM'), prefix = 'month-wrapper', className: clsName, children } = props;
   const className = cx(clsName, prefix);
   const wrapperRef = React.useRef<HTMLTableElement>();
 
+  React.useImperativeHandle(ref, () => wrapperRef)
   return (
     <table className={className} ref={wrapperRef} cellSpacing="0">
       <thead className={`${prefix}-header`}>

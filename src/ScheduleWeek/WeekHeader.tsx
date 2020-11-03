@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import cx from 'classnames';
 
-import { WeekText } from '../constants';
+import { WeekText } from '../utils/constants';
 
 export interface WeekHeaderProps {
   onClick?(arg, e);
