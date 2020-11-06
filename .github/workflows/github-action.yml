@@ -10,6 +10,6 @@ jobs:
       - name: Setup Nodejs env
         uses: actions/setup-node@v2.1.2
       - name: Install Dependencies
-        run: npm ci
+        run: npm -v && npm install 
       - name: lint
         run: npm run lint
