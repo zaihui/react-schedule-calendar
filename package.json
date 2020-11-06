@@ -9,6 +9,12 @@
     "schedule course",
     "calendar"
   ],
+  "homepage": "https://github.com/Cslove/react-schedule-beauty-calendar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cslove/react-schedule-beauty-calendar.git"
+  },
+  "author": "csheng.dude@gmail.com",
   "license": "MIT",
   "files": [
     "dist",
